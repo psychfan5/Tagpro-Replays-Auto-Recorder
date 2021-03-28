@@ -1,0 +1,53 @@
+// ==UserScript==
+// @name         TagPro Replays Report Recorder
+// @version      0.2
+// @description  Automatically initiates the replays extension to record when you try to report/ban a player or call the mods and some other stuff
+// @author       Unknown
+// @contributor  Anne Frank
+// @include       http://*.koalabeast.com:*
+// @include       http://tangent.jukejuice.com:*
+// @include       http://maptest*.newcompte.fr:*
+// @include       http://tagpro-*.koalabeast.com/*
+// @include       *://*.koalabeast.com/game*
+// @grant        none
+// ==/UserScript==
+
+tagpro.ready(function() {
+    tagpro.socket.on('chat',function(data) {
+        if(!data.from && data.message.match('has banned'))
+        {
+            if($('#recordButton'))
+            {
+                setTimeout(function() { $('#recordButton').click(); }, 1000);
+            }
+        }
+        if(!data.from && data.message.match('You have reported'))
+        {
+            if($('#recordButton'))
+            {
+                setTimeout(function() { $('#recordButton').click(); }, 1000);
+            }
+        }
+        if(!data.from && data.message.match('Sorry, you already have a recent report on this player.'))
+        {
+            if($('#recordButton'))
+            {
+                setTimeout(function() { $('#recordButton').click(); }, 1000);
+            }
+        }
+        if(!data.from && data.message.match('Your call for a moderator has been received:'))
+        {
+            if($('#recordButton'))
+            {
+                setTimeout(function() { $('#recordButton').click(); }, 1000);
+            }
+        }
+        if(!data.from && data.message.match('You have been muted by a moderator due to inappropriate chat.'))
+        {
+            if($('#recordButton'))
+            {
+                setTimeout(function() { $('#recordButton').click(); }, 1000);
+            }
+        }
+    });
+});
